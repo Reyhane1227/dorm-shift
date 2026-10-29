@@ -75,6 +75,18 @@
   .warn-box { background: #fef3c7; color: #92400e; border-right: 6px solid var(--warn); }
   @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: none; } }
 
+  .search-box {
+    margin-bottom: 15px; padding: 10px 15px; border-radius: 10px;
+    background: var(--bg-card); border: 1px solid var(--border-color);
+    display: flex; gap: 10px; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+  .search-box input {
+    flex: 1; padding: 10px 15px; border: 1px solid var(--border-color);
+    border-radius: 8px; font-family: inherit; font-size: 14px;
+    background: var(--bg-body); color: var(--text-main); outline: none;
+  }
+  .search-box input:focus { border-color: var(--primary-color); }
+
   .table-container {
     background: var(--bg-card); border-radius: 12px;
     box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
@@ -255,6 +267,10 @@
   <div class="alert-box" id="alertBox"></div>
   <div class="warn-box" id="warnBox"></div>
 
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="🔍 جستجوی نام همکار..." oninput="filterPersonnel()">
+  </div>
+
   <div class="table-container">
     <table class="main-table" id="mainTable">
       <thead>
@@ -304,9 +320,9 @@
     </div>
     <div class="modal-body">
       <div class="info-banner">
-        خروجی حرفه‌ای شامل ۵ شیت کامل: <b>برنامه شیفت</b>، <b>آمار کارکرد</b>، <b>مرخصی‌ها</b>، <b>پرسنل</b> و <b>خلاصه</b>.
+        خروجی شامل ۵ شیت کامل: <b>برنامه شیفت</b>، <b>آمار کارکرد</b>، <b>مرخصی‌ها</b>، <b>پرسنل</b> و <b>خلاصه</b>.
       </div>
-      <button class="btn-secondary" style="width:100%; padding:12px; margin-bottom:10px; font-size:14px;" onclick="exportExcelFull()">📥 دانلود فایل اکسل حرفه‌ای (.xlsx)</button>
+      <button class="btn-secondary" style="width:100%; padding:12px; margin-bottom:10px; font-size:14px;" onclick="exportExcelFull()">📥 دانلود فایل اکسل (.xlsx)</button>
     </div>
   </div>
 </div>
@@ -1056,7 +1072,14 @@ function init() {
   updateAdminUI(); renderTable(); renderLeaveGrid(); renderStats();
 }
 function save() { localStorage.setItem("shiftData", JSON.stringify(state)); }
-init();
+
+// پیام خوش‌آمدگویی
+window.onload = function() {
+  setTimeout(() => {
+    alert("👋 سلام و خسته نباشید!\n\nبه سامانه برنامه‌ریزی شیفت خوابگاه‌ها خوش آمدید.\n\nلطفاً ابتدا از نوار بالا، نام خودتان را انتخاب کنید و سپس شیفت‌های خود را در جدول ثبت کنید.");
+  }, 500);
+  init();
+};
 </script>
 </body>
 </html>
