@@ -23,66 +23,79 @@
     --border-color: #334155; --th-bg: #1e293b;
     --input-bg: #0f172a; --primary-color: #3b82f6;
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Vazirmatn', Tahoma, sans-serif; }
-  body { background-color: var(--bg-body); color: var(--text-main); padding: 20px; min-height: 100vh; line-height: 1.6; }
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Vazirmatn', Tahoma, sans-serif; -webkit-tap-highlight-color: transparent; }
+  body { background-color: var(--bg-body); color: var(--text-main); padding: 10px; min-height: 100vh; line-height: 1.6; font-size: 13px; }
   .container { max-width: 1400px; margin: 0 auto; }
 
   .app-header {
-    background: var(--bg-header); color: white; padding: 16px 24px;
-    border-radius: 12px; display: flex; justify-content: space-between;
-    align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 15px;
-    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    background: var(--bg-header); color: white; padding: 12px 15px;
+    border-radius: 12px; display: flex; flex-direction: column;
+    align-items: center; margin-bottom: 15px; gap: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); text-align: center;
   }
-  .app-header h1 { font-size: 18px; font-weight: 900; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .app-header h1 { font-size: 15px; font-weight: 900; display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; }
   .admin-badge {
-    display: none; align-items: center; gap: 6px; font-size: 12px; font-weight: 700;
-    background: #f59e0b; color: #78350f; padding: 4px 10px; border-radius: 20px;
+    display: none; align-items: center; gap: 6px; font-size: 11px; font-weight: 700;
+    background: #f59e0b; color: #78350f; padding: 3px 8px; border-radius: 20px;
   }
   body.is-admin .admin-badge { display: inline-flex; }
   body.is-admin .admin-only { display: inline-flex !important; }
 
-  .controls { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .controls { display: flex; gap: 8px; align-items: center; justify-content: center; flex-wrap: wrap; width: 100%; }
   .control-box {
-    display: flex; align-items: center; gap: 8px;
-    background: rgba(255,255,255,0.1); padding: 8px 12px; border-radius: 8px;
-    border: 1px solid rgba(255,255,255,0.2);
+    display: flex; align-items: center; gap: 6px;
+    background: rgba(255,255,255,0.1); padding: 6px 10px; border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.2); flex: 1; min-width: 130px;
   }
-  .control-box label { font-size: 13px; font-weight: 700; color: #e2e8f0; }
+  .control-box label { font-size: 11px; font-weight: 700; color: #e2e8f0; white-space: nowrap; }
   .control-box select {
-    padding: 6px 10px; font-size: 13px; border-radius: 6px; border: none;
+    flex: 1; padding: 6px; font-size: 12px; border-radius: 6px; border: none;
     font-family: inherit; font-weight: 700; color: var(--text-main); background: var(--input-bg); cursor: pointer;
-    outline: none;
+    outline: none; width: 100%;
   }
   .tool-btn {
     background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
-    color: white; width: 38px; height: 38px; border-radius: 8px;
+    color: white; width: 36px; height: 36px; border-radius: 8px;
     display: flex; align-items: center; justify-content: center;
-    cursor: pointer; font-size: 18px; transition: all 0.2s;
+    cursor: pointer; font-size: 16px; transition: all 0.2s;
   }
-  .tool-btn:hover { background: rgba(255,255,255,0.25); transform: translateY(-2px); }
+  .tool-btn:active { background: rgba(255,255,255,0.3); transform: scale(0.95); }
   .tool-btn.danger { background: rgba(220, 38, 38, 0.4); border-color: #f87171; }
   .tool-btn.admin-only { display: none; }
   .tool-btn.logged-in { background: rgba(245, 158, 11, 0.5); border-color: #fbbf24; }
 
   .alert-box, .warn-box {
-    display: none; padding: 14px 20px; border-radius: 10px;
-    margin-bottom: 12px; font-size: 14px; font-weight: 700;
+    display: none; padding: 12px 15px; border-radius: 10px;
+    margin-bottom: 12px; font-size: 13px; font-weight: 700;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    position: sticky; top: 15px; z-index: 100;
+    position: sticky; top: 10px; z-index: 100;
     animation: slideDown 0.3s ease-out;
   }
-  .alert-box { background: #fee2e2; color: #991b1b; border-right: 6px solid var(--danger); }
-  .warn-box { background: #fef3c7; color: #92400e; border-right: 6px solid var(--warn); }
+  .alert-box { background: #fee2e2; color: #991b1b; border-right: 5px solid var(--danger); }
+  .warn-box { background: #fef3c7; color: #92400e; border-right: 5px solid var(--warn); }
   @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: none; } }
 
+  /* ====== راهنماها ====== */
+  .guide-box {
+    background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px;
+    padding: 10px 12px; margin-bottom: 12px; font-size: 12px;
+    color: #1e40af; line-height: 1.8; display: flex; align-items: flex-start; gap: 8px;
+  }
+  body.dark-mode .guide-box {
+    background: #1e3a8a; color: #bfdbfe; border-color: #1e40af;
+  }
+  .guide-box .guide-icon { font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+  .guide-box b { color: #1e3a8a; }
+  body.dark-mode .guide-box b { color: #dbeafe; }
+
   .search-box {
-    margin-bottom: 15px; padding: 10px 15px; border-radius: 10px;
+    margin-bottom: 12px; padding: 8px 12px; border-radius: 10px;
     background: var(--bg-card); border: 1px solid var(--border-color);
-    display: flex; gap: 10px; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    display: flex; gap: 8px; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   }
   .search-box input {
-    flex: 1; padding: 10px 15px; border: 1px solid var(--border-color);
-    border-radius: 8px; font-family: inherit; font-size: 14px;
+    flex: 1; padding: 10px 12px; border: 1px solid var(--border-color);
+    border-radius: 8px; font-family: inherit; font-size: 13px;
     background: var(--bg-body); color: var(--text-main); outline: none;
   }
   .search-box input:focus { border-color: var(--primary-color); }
@@ -90,17 +103,18 @@
   .table-container {
     background: var(--bg-card); border-radius: 12px;
     box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
-    border: 1px solid var(--border-color); overflow-x: auto; margin-bottom: 24px;
+    border: 1px solid var(--border-color); overflow-x: auto; margin-bottom: 15px;
+    -webkit-overflow-scrolling: touch;
   }
-  .table-container::-webkit-scrollbar { height: 10px; }
-  .table-container::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 5px; }
+  .table-container::-webkit-scrollbar { height: 6px; }
+  .table-container::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
   .table-container::-webkit-scrollbar-track { background: #f1f5f9; }
 
-  table.main-table { width: 100%; border-collapse: collapse; text-align: center; font-size: 13px; }
-  th, td { border: 1px solid var(--border-color); padding: 10px 6px; vertical-align: middle; transition: background 0.15s; }
-  th { font-weight: 900; font-size: 13px; color: var(--text-main); background: var(--th-bg); }
-  .th-zone { font-size: 14px; padding: 12px 6px; }
-  .th-shift { font-size: 12px; }
+  table.main-table { width: 100%; border-collapse: collapse; text-align: center; font-size: 11px; min-width: 800px; }
+  th, td { border: 1px solid var(--border-color); padding: 6px 4px; vertical-align: middle; transition: background 0.15s; }
+  th { font-weight: 900; font-size: 11px; color: var(--text-main); background: var(--th-bg); }
+  .th-zone { font-size: 12px; padding: 10px 4px; }
+  .th-shift { font-size: 10px; }
 
   .bg-z1 { background: #e0f2fe !important; color: #0369a1 !important; }
   .bg-z2 { background: #dcfce7 !important; color: #15803d !important; }
@@ -108,16 +122,16 @@
   .bg-z4 { background: #fef9c3 !important; color: #a16207 !important; }
   .bg-z5 { background: #f3e8ff !important; color: #6b21a8 !important; }
 
-  .day-cell { font-weight: 900; font-size: 14px; width: 80px; color: var(--text-main); }
-  .date-cell { font-size: 12px; width: 80px; color: var(--text-muted); }
+  .day-cell { font-weight: 900; font-size: 11px; width: 65px; color: var(--text-main); }
+  .date-cell { font-size: 10px; width: 65px; color: var(--text-muted); }
 
   tr.is-friday td { background: #f1f5f9; }
   body.dark-mode tr.is-friday td { background: #1e293b; }
   tr.is-friday .day-cell, tr.is-friday .date-cell { color: #ef4444; }
 
   select.s-cell {
-    width: 100%; height: 38px; border: 1px solid transparent; background: transparent;
-    font-family: inherit; font-size: 12px; font-weight: 700; text-align: center; text-align-last: center;
+    width: 100%; height: 34px; border: 1px solid transparent; background: transparent;
+    font-family: inherit; font-size: 11px; font-weight: 700; text-align: center; text-align-last: center;
     outline: none; cursor: pointer; appearance: none; -webkit-appearance: none; color: var(--text-main); border-radius: 6px;
   }
   select.s-cell:hover:not(:disabled) { background: rgba(0,0,0,0.03); }
@@ -129,37 +143,40 @@
   select.s-cell.night-conflict { background: #fca5a5 !important; color: #7f1d1d !important; border-color: #ef4444; }
   select.s-cell.filled { border-color: #86efac; }
   select.s-cell:disabled { opacity: 0.75; cursor: not-allowed; }
-  body:not(.is-admin) select.s-cell.locked { cursor: not-allowed; }
-  body:not(.is-admin) select.s-cell.locked:hover { background: transparent; }
 
   .section-box {
-    background: var(--bg-card); border-radius: 12px; padding: 20px;
-    margin-top: 24px; border: 1px solid var(--border-color);
+    background: var(--bg-card); border-radius: 12px; padding: 12px;
+    margin-top: 15px; border: 1px solid var(--border-color);
     box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
   }
-  .section-box h3 { font-size: 16px; margin-bottom: 15px; color: var(--primary-color); border-bottom: 2px solid var(--border-color); padding-bottom: 8px; }
+  .section-box h3 { font-size: 13px; margin-bottom: 10px; color: var(--primary-color); border-bottom: 2px solid var(--border-color); padding-bottom: 6px; }
 
-  .leave-grid-wrapper { overflow-x: auto; }
+  .leave-grid-wrapper { overflow-x: hidden; }
   .leave-grid {
-    display: grid; grid-template-columns: 150px repeat(5, 1fr); gap: 8px; align-items: center; min-width: 600px;
+    display: grid; grid-template-columns: 1fr; gap: 8px; align-items: center;
   }
-  .leave-header { font-weight: bold; text-align: center; font-size: 12px; padding: 8px; background: var(--th-bg); border-radius: 6px; }
-  .leave-name { font-weight: bold; text-align: right; padding-right: 10px; font-size: 13px; }
+  .leave-header { display: none; }
+  .leave-name { 
+    font-weight: bold; text-align: center; font-size: 12px; 
+    background: var(--th-bg); padding: 8px; border-radius: 6px;
+    border: 1px solid var(--border-color);
+  }
   .leave-select {
-    width: 100%; height: 32px; border: 1px solid var(--border-color); border-radius: 6px;
-    font-family: inherit; font-size: 12px; text-align: center; outline: none; background: var(--bg-body); color: var(--text-main);
+    width: 100%; height: 38px; border: 1px solid var(--border-color); border-radius: 6px;
+    font-family: inherit; font-size: 12px; text-align: center; outline: none; 
+    background: var(--bg-body); color: var(--text-main);
+    -webkit-appearance: none; appearance: none;
   }
   .leave-select.locked { opacity: 0.6; cursor: not-allowed; }
-  .leave-select.conflict-leave { border-color: var(--danger); background: #fee2e2; color: #991b1b; }
 
-  .stats-table-wrapper { overflow-x: auto; border-radius: 8px; border: 1px solid var(--border-color); }
-  .stats-table-wrapper::-webkit-scrollbar { height: 8px; }
-  .stats-table-wrapper::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-  table.stats-table { width: 100%; border-collapse: collapse; text-align: center; font-size: 12px; min-width: 700px; }
-  table.stats-table th { background: var(--bg-header); color: white; padding: 10px 5px; font-size: 11px; border: 1px solid var(--border-color); }
-  table.stats-table td { padding: 8px 5px; border: 1px solid var(--border-color); }
+  .stats-table-wrapper { overflow-x: auto; border-radius: 8px; border: 1px solid var(--border-color); -webkit-overflow-scrolling: touch; }
+  .stats-table-wrapper::-webkit-scrollbar { height: 6px; }
+  .stats-table-wrapper::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+  table.stats-table { width: 100%; border-collapse: collapse; text-align: center; font-size: 10px; min-width: 600px; }
+  table.stats-table th { background: var(--bg-header); color: white; padding: 8px 3px; font-size: 10px; border: 1px solid var(--border-color); }
+  table.stats-table td { padding: 6px 3px; border: 1px solid var(--border-color); }
   table.stats-table tr:nth-child(even) { background: var(--th-bg); }
-  .stat-name { font-weight: 900; text-align: right; padding-right: 12px !important; color: var(--primary-color); white-space: nowrap; }
+  .stat-name { font-weight: 900; text-align: right; padding-right: 8px !important; color: var(--primary-color); white-space: nowrap; }
   .val-plus { color: #059669; font-weight: bold; background: #d1fae5; }
   .val-minus { color: #dc2626; font-weight: bold; background: #fee2e2; }
   body.dark-mode .val-plus { background: #064e3b; color: #a7f3d0; }
@@ -168,7 +185,7 @@
   .modal-overlay {
     display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
     background: rgba(0,0,0,0.6); z-index: 1000; justify-content: center; align-items: center;
-    padding: 20px; backdrop-filter: blur(4px);
+    padding: 15px; backdrop-filter: blur(4px);
   }
   .modal-overlay.active { display: flex; }
   .modal-content {
@@ -178,54 +195,84 @@
     max-height: 90vh; display: flex; flex-direction: column;
   }
   .modal-header {
-    background: var(--bg-header); color: white; padding: 16px 24px;
+    background: var(--bg-header); color: white; padding: 14px 18px;
     display: flex; justify-content: space-between; align-items: center;
   }
-  .modal-header h2 { font-size: 18px; margin: 0; }
-  .modal-close { background: none; border: none; color: white; font-size: 28px; cursor: pointer; line-height: 1; opacity: 0.8; }
-  .modal-body { padding: 24px; overflow-y: auto; font-size: 14px; line-height: 1.8; }
+  .modal-header h2 { font-size: 15px; margin: 0; }
+  .modal-close { background: none; border: none; color: white; font-size: 26px; cursor: pointer; line-height: 1; opacity: 0.8; padding: 0 5px; }
+  .modal-body { padding: 18px; overflow-y: auto; font-size: 13px; line-height: 1.8; }
 
   .staff-list { margin-top: 15px; display: flex; flex-direction: column; gap: 8px; max-height: 300px; overflow-y: auto; }
   .staff-item { display: flex; justify-content: space-between; align-items: center; background: var(--th-bg); padding: 10px; border-radius: 8px; border: 1px solid var(--border-color); gap: 8px; flex-wrap: wrap; }
-  .staff-item .staff-info { flex: 1; min-width: 120px; }
-  .staff-item input.req-input { width: 70px; padding: 4px 8px; border: 1px solid var(--border-color); border-radius: 4px; font-family: inherit; font-size: 12px; background: var(--input-bg); color: var(--text-main); }
-  .btn-add-staff { display: flex; gap: 8px; margin-top: 15px; flex-wrap: wrap; }
-  .btn-add-staff input { flex: 1; min-width: 100px; padding: 10px; border: 1px solid var(--border-color); border-radius: 6px; font-family: inherit; background: var(--input-bg); color: var(--text-main); }
-  .btn-add-staff button { padding: 10px 20px; background: var(--primary-color); color: white; border: none; border-radius: 6px; cursor: pointer; font-family: inherit; font-weight: bold; }
-  .btn-del { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-family: inherit; font-weight: bold; }
-  .btn-secondary { background: var(--th-bg); color: var(--text-main); border: 1px solid var(--border-color); padding: 6px 12px; border-radius: 6px; cursor: pointer; font-family: inherit; font-weight: bold; }
+  .staff-item .staff-info { flex: 1; min-width: 100px; font-size: 13px; }
+  .staff-item input.req-input { width: 60px; padding: 6px; border: 1px solid var(--border-color); border-radius: 4px; font-family: inherit; font-size: 12px; background: var(--input-bg); color: var(--text-main); text-align: center; }
+  .btn-add-staff { display: flex; gap: 6px; margin-top: 15px; flex-wrap: wrap; }
+  .btn-add-staff input { flex: 1; min-width: 100px; padding: 10px; border: 1px solid var(--border-color); border-radius: 6px; font-family: inherit; font-size: 13px; background: var(--input-bg); color: var(--text-main); }
+  .btn-add-staff button { padding: 10px 15px; background: var(--primary-color); color: white; border: none; border-radius: 6px; cursor: pointer; font-family: inherit; font-weight: bold; font-size: 13px; }
+  .btn-del { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; padding: 6px 10px; border-radius: 6px; cursor: pointer; font-family: inherit; font-weight: bold; font-size: 12px; }
+  .btn-secondary { background: var(--th-bg); color: var(--text-main); border: 1px solid var(--border-color); padding: 8px 12px; border-radius: 6px; cursor: pointer; font-family: inherit; font-weight: bold; font-size: 12px; }
 
   .info-banner {
-    background: #e0f2fe; color: #0369a1; padding: 10px 15px; border-radius: 8px; margin-bottom: 15px; font-size: 13px; border-right: 4px solid #3b82f6;
+    background: #e0f2fe; color: #0369a1; padding: 10px 12px; border-radius: 8px; margin-bottom: 12px; font-size: 12px; border-right: 4px solid #3b82f6; line-height: 1.7;
   }
   body.dark-mode .info-banner { background: #1e3a8a; color: #bfdbfe; border-right-color: #60a5fa; }
 
   .dialog-overlay {
     display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5);
-    z-index: 2000; justify-content: center; align-items: center; padding: 20px; backdrop-filter: blur(4px);
+    z-index: 2000; justify-content: center; align-items: center; padding: 15px; backdrop-filter: blur(4px);
   }
   .dialog-overlay.active { display: flex; }
   .dialog-box {
     background: var(--bg-card); color: var(--text-main); border-radius: 14px;
-    max-width: 420px; width: 100%; padding: 22px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.25);
+    max-width: 400px; width: 100%; padding: 20px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.25);
   }
-  .dialog-box h3 { font-size: 16px; margin-bottom: 10px; }
-  .dialog-box p { font-size: 14px; margin-bottom: 16px; color: var(--text-muted); white-space: pre-line; }
-  .dialog-box input { width: 100%; padding: 10px; border: 1px solid var(--border-color); border-radius: 8px; font-family: inherit; margin-bottom: 14px; background: var(--input-bg); color: var(--text-main); }
-  .dialog-actions { display: flex; gap: 10px; justify-content: flex-start; }
-  .dialog-actions button { padding: 8px 18px; border-radius: 8px; border: none; cursor: pointer; font-family: inherit; font-weight: bold; font-size: 13px; }
+  .dialog-box h3 { font-size: 15px; margin-bottom: 8px; }
+  .dialog-box p { font-size: 13px; margin-bottom: 14px; color: var(--text-muted); white-space: pre-line; line-height: 1.7; }
+  .dialog-box input { width: 100%; padding: 10px; border: 1px solid var(--border-color); border-radius: 8px; font-family: inherit; font-size: 13px; margin-bottom: 12px; background: var(--input-bg); color: var(--text-main); }
+  .dialog-actions { display: flex; gap: 8px; justify-content: flex-start; }
+  .dialog-actions button { padding: 8px 16px; border-radius: 8px; border: none; cursor: pointer; font-family: inherit; font-weight: bold; font-size: 12px; }
   .dialog-actions .btn-primary { background: var(--primary-color); color: white; }
   .dialog-actions .btn-cancel { background: var(--th-bg); color: var(--text-main); border: 1px solid var(--border-color); }
   .dialog-actions .btn-danger { background: var(--danger); color: white; }
 
   .col-hidden { display: none !important; }
 
-  @media (max-width: 768px) {
-    body { padding: 10px; }
-    .app-header { flex-direction: column; align-items: stretch; text-align: center; }
-    .controls { justify-content: center; }
-    .control-box { justify-content: center; }
-    .section-box { padding: 15px; }
+  @media (min-width: 768px) {
+    body { padding: 20px; font-size: 14px; }
+    .app-header { flex-direction: row; justify-content: space-between; text-align: right; padding: 16px 24px; }
+    .app-header h1 { font-size: 18px; }
+    .controls { justify-content: flex-end; width: auto; }
+    .control-box { min-width: auto; flex: none; }
+    .control-box label { font-size: 13px; }
+    .control-box select { font-size: 13px; }
+    .tool-btn { width: 38px; height: 38px; font-size: 18px; }
+    .guide-box { font-size: 13px; padding: 12px 15px; }
+    table.main-table { font-size: 13px; min-width: auto; }
+    th, td { padding: 10px 6px; }
+    th { font-size: 13px; }
+    .th-zone { font-size: 14px; padding: 12px 6px; }
+    .th-shift { font-size: 12px; }
+    .day-cell { font-size: 14px; width: 80px; }
+    .date-cell { font-size: 12px; width: 80px; }
+    select.s-cell { height: 38px; font-size: 12px; }
+    .section-box { padding: 20px; }
+    .section-box h3 { font-size: 16px; margin-bottom: 15px; padding-bottom: 8px; }
+    
+    .leave-grid-wrapper { overflow-x: auto; }
+    .leave-grid { grid-template-columns: 150px repeat(5, 1fr); gap: 8px; min-width: 600px; }
+    .leave-header { display: block; font-weight: bold; text-align: center; font-size: 12px; padding: 8px; background: var(--th-bg); border-radius: 6px; }
+    .leave-name { text-align: right; padding-right: 10px; font-size: 13px; background: none; border: none; padding: 0; }
+    .leave-select { height: 32px; font-size: 12px; }
+    
+    table.stats-table { font-size: 12px; min-width: 700px; }
+    table.stats-table th { padding: 10px 5px; font-size: 11px; }
+    table.stats-table td { padding: 8px 5px; }
+    .stat-name { padding-right: 12px !important; }
+    
+    .modal-content { max-width: 600px; }
+    .modal-header { padding: 16px 24px; }
+    .modal-header h2 { font-size: 18px; }
+    .modal-body { padding: 24px; font-size: 14px; }
   }
 </style>
 </head>
@@ -241,7 +288,7 @@
       <div class="control-box">
         <label>🏢 خوابگاه:</label>
         <select id="myZone" onchange="onZoneChange()">
-          <option value="">همه خوابگاه‌ها</option>
+          <option value="">همه</option>
           <option value="بهارستان ۱">بهارستان ۱</option>
           <option value="بهارستان ۲">بهارستان ۲</option>
           <option value="بهارستان ۳">بهارستان ۳</option>
@@ -267,6 +314,14 @@
   <div class="alert-box" id="alertBox"></div>
   <div class="warn-box" id="warnBox"></div>
 
+  <!-- راهنمای جدول شیفت -->
+  <div class="guide-box">
+    <span class="guide-icon">💡</span>
+    <div>
+      <b>راهنمای ثبت شیفت:</b> ابتدا نام خود را از نوار بالا انتخاب کنید، سپس در جدول زیر روی ستون روز مورد نظر کلیک کرده و نام خود را انتخاب کنید. فقط شیفت‌های خودتان قابل ویرایش است.
+    </div>
+  </div>
+
   <div class="search-box">
     <input type="text" id="searchInput" placeholder="🔍 جستجوی نام همکار..." oninput="filterPersonnel()">
   </div>
@@ -285,7 +340,14 @@
   </div>
 
   <div class="section-box">
-    <h3>🏖️ ثبت مرخصی (هر روز = ۶.۵ ساعت - روزهای جمعه ممنوع)</h3>
+    <h3>🏖️ ثبت مرخصی</h3>
+    <!-- راهنمای مرخصی -->
+    <div class="guide-box">
+      <span class="guide-icon">💡</span>
+      <div>
+        <b>راهنمای ثبت مرخصی:</b> برای هر روز از ماه، یک مرخصی می‌توانید ثبت کنید. هر مرخصی معادل <b>۷ ساعت و ۳۳ دقیقه</b> است. توجه: در روزهایی که شیفت دارید، امکان ثبت مرخصی وجود ندارد. روزهای جمعه نیز قابل انتخاب نیستند.
+      </div>
+    </div>
     <div class="leave-grid-wrapper">
       <div class="leave-grid" id="leaveGrid"></div>
     </div>
@@ -293,15 +355,19 @@
 
   <div class="section-box">
     <h3>📊 آمار کارکرد و ساعت‌ها</h3>
-    <div class="info-banner">
-      💡 <b>راهنمای محاسبه:</b> صبح (۶.۵ ساعت)، عصر (۵.۵ ساعت)، شب (۱۲ ساعت). ضریب جمعه طبق قانون محاسبه می‌شود. مرخصی هر روز ۶.۵ ساعت است.
+    <!-- راهنمای آمار -->
+    <div class="guide-box">
+      <span class="guide-icon">💡</span>
+      <div>
+        <b>راهنمای محاسبه:</b> ساعت کاری هر شیفت: صبح (۶.۵ ساعت)، عصر (۵.۵ ساعت)، شب (۱۲ ساعت). ضریب جمعه طبق قانون محاسبه می‌شود. هر مرخصی معادل ۷:۳۳ ساعت است.
+      </div>
     </div>
     <div class="stats-table-wrapper">
       <table class="stats-table" id="statsTable">
         <thead>
           <tr>
             <th>نام</th><th>موظفی</th><th>صبح</th><th>عصر</th><th>شب</th>
-            <th>تعطیلات</th><th>مرخصی</th><th>کارکرد کل</th><th>اضافه</th><th>کسر</th>
+            <th>تعطیلات</th><th>مرخصی</th><th>کارکرد</th><th>اضافه</th><th>کسر</th>
           </tr>
         </thead>
         <tbody id="statsBody"></tbody>
@@ -320,9 +386,9 @@
     </div>
     <div class="modal-body">
       <div class="info-banner">
-        خروجی شامل ۵ شیت کامل: <b>برنامه شیفت</b>، <b>آمار کارکرد</b>، <b>مرخصی‌ها</b>، <b>پرسنل</b> و <b>خلاصه</b>.
+        خروجی شامل ۵ شیت: <b>برنامه شیفت</b>، <b>آمار کارکرد</b>، <b>مرخصی‌ها</b>، <b>پرسنل</b> و <b>خلاصه</b>.
       </div>
-      <button class="btn-secondary" style="width:100%; padding:12px; margin-bottom:10px; font-size:14px;" onclick="exportExcelFull()">📥 دانلود فایل اکسل (.xlsx)</button>
+      <button class="btn-secondary" style="width:100%; padding:12px; font-size:14px;" onclick="exportExcelFull()">📥 دانلود فایل اکسل (.xlsx)</button>
     </div>
   </div>
 </div>
@@ -336,11 +402,11 @@
     </div>
     <div class="modal-body">
       <div class="info-banner" id="staffModalInfo">
-        💡 نام و موظفی هر همکار را می‌توانید اینجا ویرایش کنید.
+        💡 نام و موظفی هر همکار را ویرایش کنید.
       </div>
       <div class="btn-add-staff" id="staffAddBox">
         <input type="text" id="newStaffName" placeholder="نام همکار">
-        <input type="number" id="newStaffReq" placeholder="موظفی (ساعت)" style="width:110px; flex:0;" value="175">
+        <input type="number" id="newStaffReq" placeholder="موظفی" style="width:80px; flex:0;" value="175">
         <button onclick="addStaff()">➕ افزودن</button>
       </div>
       <div class="staff-list" id="staffList"></div>
@@ -357,12 +423,12 @@
     </div>
     <div class="modal-body">
       <div id="adminLoginBox">
-        <div class="info-banner">برای دسترسی به امکانات مدیریتی، رمز ادمین را وارد کنید.</div>
+        <div class="info-banner">رمز ادمین را وارد کنید.</div>
         <input type="password" id="adminPasswordInput" placeholder="رمز ادمین" style="width:100%; padding:10px; border:1px solid var(--border-color); border-radius:8px; font-family:inherit; margin-bottom:12px; background:var(--input-bg); color:var(--text-main);">
-        <button class="btn-primary" style="padding:10px 20px; background:var(--primary-color); color:white; border:none; border-radius:8px; cursor:pointer; font-family:inherit; font-weight:bold;" onclick="submitAdminLogin()">ورود</button>
+        <button class="btn-primary" style="padding:10px 20px; background:var(--primary-color); color:white; border:none; border-radius:8px; cursor:pointer; font-family:inherit; font-weight:bold; width:100%;" onclick="submitAdminLogin()">ورود</button>
       </div>
       <div id="adminPanelBox" style="display:none;">
-        <div class="info-banner">✅ شما به عنوان ادمین وارد شده‌اید. الان می‌توانید شیفت همه را تغییر دهید.</div>
+        <div class="info-banner">✅ شما ادمین هستید.</div>
         <button class="btn-secondary" style="width:100%; padding:10px; margin-bottom:10px;" onclick="openChangePassword()">🔐 تغییر رمز ادمین</button>
         <button class="btn-danger" style="width:100%; padding:10px; background:var(--danger); color:white; border:none; border-radius:8px; cursor:pointer; font-family:inherit; font-weight:bold;" onclick="logoutAdmin()">🚪 خروج از حساب ادمین</button>
       </div>
@@ -374,31 +440,24 @@
 <div class="modal-overlay" id="helpModal">
   <div class="modal-content">
     <div class="modal-header">
-      <h2>❓ راهنمای برنامه شیفت</h2>
+      <h2>❓ راهنما</h2>
       <button class="modal-close" onclick="closeHelp()">&times;</button>
     </div>
     <div class="modal-body">
-      <h3>📝 نحوه استفاده</h3>
-      <ul>
-        <li>از نوار بالا، <b>«نام خودتان»</b> را انتخاب کنید.</li>
-        <li>در جدول، روی شیفت‌های مورد نظر کلیک کرده و نام خود را انتخاب کنید.</li>
-        <li>برای ثبت مرخصی، از جدول پایین استفاده کنید. (روزهای جمعه ممنوع)</li>
-        <li>برای دریافت فایل اکسل، دکمه 📊 را بزنید. (برای همه آزاد است)</li>
+      <h3 style="font-size:14px; margin-bottom:10px;">📝 نحوه استفاده</h3>
+      <ul style="padding-right:15px; font-size:13px; line-height:2;">
+        <li>نام خود را از نوار بالا انتخاب کنید.</li>
+        <li>شیفت‌ها را در جدول ثبت کنید.</li>
+        <li>مرخصی را از جدول پایین ثبت کنید.</li>
+        <li>فایل اکسل را با دکمه 📊 دریافت کنید.</li>
       </ul>
-      <h3>🔑 ادمین</h3>
-      <ul>
-        <li>با دکمه 🔑 و وارد کردن رمز، وارد حساب ادمین شوید.</li>
-        <li>ادمین می‌تواند شیفت و مرخصی <b>همه افراد</b> را ثبت/ویرایش کند.</li>
-        <li>مدیریت پرسنل فقط برای ادمین است.</li>
-      </ul>
-      <h3>🚫 قوانین (اعمال خودکار)</h3>
-      <ul>
-        <li><b>ترکیب‌های مجاز:</b> فقط صبح، عصر، شب، صبح+عصر، یا عصر+شب.</li>
-        <li><b>شب به صبح:</b> اگر دیشب شب بودید، امروز صبح ممنوع.</li>
-        <li><b>صبح به شب:</b> اگر امروز صبح داشتید، امشب شب ممنوع.</li>
-        <li><b>شب متوالی:</b> دو شب پشت سر هم ممنوع.</li>
-        <li><b>تکرار نوبت:</b> یک نوبت در دو خوابگاه در یک روز ممنوع.</li>
-        <li><b>مرخصی:</b> در روزی که شیفت دارید مرخصی ممنوع.</li>
+      <h3 style="font-size:14px; margin:15px 0 10px;">🚫 قوانین</h3>
+      <ul style="padding-right:15px; font-size:13px; line-height:2;">
+        <li>ترکیب مجاز: صبح+عصر یا عصر+شب.</li>
+        <li>شب به صبح: ممنوع.</li>
+        <li>شب متوالی: ممنوع.</li>
+        <li>تکرار نوبت در یک روز: ممنوع.</li>
+        <li>مرخصی در روز شیفت: ممنوع.</li>
       </ul>
     </div>
   </div>
@@ -419,7 +478,7 @@ const MONTH = "آبان";
 const DAYS = 30;
 const BASE_DATE = new Date(2026, 9, 23);
 const HOURS = { "صبح": 6.5, "عصر": 5.5, "شب": 12 };
-const LEAVE_HOURS = 6.5;
+const LEAVE_HOURS = 7.55; // ۷ ساعت و ۳۳ دقیقه
 const MAX_LEAVE = 5;
 const WEEKDAYS = ["یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنجشنبه", "جمعه", "شنبه"];
 
@@ -432,8 +491,7 @@ const DEFAULT_PERSONNEL = [
   { name: "خانم چراغ چشم", req: 184 }, { name: "خانم امیری", req: 184 }
 ].sort((a, b) => a.name.localeCompare(b.name, 'fa'));
 
-// هش رمز 12345678
-const DEFAULT_ADMIN_HASH = "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f";
+const DEFAULT_ADMIN_HASH = "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f"; // 12345678
 
 let PERSONNEL = [];
 let state = { shifts: {}, leaves: {} };
@@ -461,6 +519,16 @@ async function sha256(text) {
   const enc = new TextEncoder().encode(text);
   const buf = await crypto.subtle.digest("SHA-256", enc);
   return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
+}
+
+function filterPersonnel() {
+  const q = document.getElementById("searchInput").value.trim().toLowerCase();
+  document.querySelectorAll("select.s-cell").forEach(sel => {
+    Array.from(sel.options).forEach(opt => {
+      if (!opt.value) return;
+      opt.style.display = opt.textContent.toLowerCase().includes(q) ? "" : "none";
+    });
+  });
 }
 
 /* ---------- Excel Export ---------- */
@@ -556,7 +624,7 @@ function exportExcelFull() {
   }
   PERSONNEL.forEach(p => {
     const totalShift = morningHours[p.name] + eveningHours[p.name] + nightHours[p.name] + holidayExtra[p.name];
-    const leaveH = leaveCount[p.name] * LEAVE_HOURS;
+    const leaveH = Math.round((leaveCount[p.name] * LEAVE_HOURS) * 100) / 100;
     const total = Math.round((totalShift + leaveH) * 10) / 10;
     const diff = Math.round((total - p.req) * 10) / 10;
     sheet2.push([p.name, p.req, morningHours[p.name], eveningHours[p.name], nightHours[p.name], Math.round(holidayExtra[p.name] * 10) / 10, leaveH, total, diff > 0 ? diff : 0, diff < 0 ? Math.abs(diff) : 0]);
@@ -619,7 +687,7 @@ function exportExcelFull() {
   let totalAllHours = 0;
   PERSONNEL.forEach(p => {
     const totalShift = morningHours[p.name] + eveningHours[p.name] + nightHours[p.name] + holidayExtra[p.name];
-    const leaveH = leaveCount[p.name] * LEAVE_HOURS;
+    const leaveH = Math.round((leaveCount[p.name] * LEAVE_HOURS) * 100) / 100;
     totalAllHours += Math.round((totalShift + leaveH) * 10) / 10;
   });
   const sheet5 = [["عنوان", "مقدار"], ["ماه", MONTH + " ۱۴۰۵"], ["تعداد روزهای ماه", DAYS], ["تعداد پرسنل", PERSONNEL.length],
@@ -1024,7 +1092,7 @@ function renderStats() {
   const overworked184 = [];
   PERSONNEL.forEach(p => {
     const totalShift = morningHours[p.name] + eveningHours[p.name] + nightHours[p.name] + holidayExtra[p.name];
-    const leaveH = leaveCount[p.name] * LEAVE_HOURS;
+    const leaveH = Math.round((leaveCount[p.name] * LEAVE_HOURS) * 100) / 100;
     const total = Math.round((totalShift + leaveH) * 10) / 10;
     const diff = Math.round((total - p.req) * 10) / 10;
     if (p.req === 184 && diff > 30) overworked184.push(p.name + " (" + diff + " ساعت)");
@@ -1074,104 +1142,70 @@ function init() {
 }
 function save() { localStorage.setItem("shiftData", JSON.stringify(state)); }
 
-// ==========================================
-// پیام خوش‌آمدگویی رسمی و اداری
-// ==========================================
+/* ---------- Welcome ---------- */
 function showWelcomeMessage() {
   const overlay = document.createElement('div');
   overlay.id = 'welcomeOverlay';
-  overlay.style.cssText = `
-    position: fixed; inset: 0; background: rgba(15, 23, 42, 0.85);
-    backdrop-filter: blur(8px); z-index: 5000; display: flex;
-    justify-content: center; align-items: center; padding: 20px;
-    animation: welcomeFadeIn 0.4s ease-out;
-  `;
+  overlay.style.cssText = `position: fixed; inset: 0; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px); z-index: 5000; display: flex; justify-content: center; align-items: center; padding: 12px; animation: welcomeFadeIn 0.4s ease-out;`;
 
   overlay.innerHTML = `
-    <div style="
-      background: #ffffff; color: #1e293b; border-radius: 16px;
-      max-width: 500px; width: 100%; padding: 35px 30px;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
-      text-align: right; direction: rtl; position: relative;
-      animation: welcomeSlideUp 0.5s ease-out;
-    ">
-      <div style="
-        display: flex; align-items: center; gap: 12px;
-        margin-bottom: 25px; padding-bottom: 20px;
-        border-bottom: 2px solid #e2e8f0;
-      ">
-        <div style="
-          width: 50px; height: 50px; flex-shrink: 0;
-          background: #1e293b; border-radius: 12px;
-          display: flex; align-items: center; justify-content: center;
-          font-size: 26px; color: white;
-        ">🗓️</div>
+    <div style="background: #ffffff; color: #1e293b; border-radius: 16px; max-width: 480px; width: 100%; padding: 22px 18px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.4); text-align: right; direction: rtl; animation: welcomeSlideUp 0.5s ease-out;">
+      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px; padding-bottom: 14px; border-bottom: 2px solid #e2e8f0;">
+        <div style="width: 42px; height: 42px; flex-shrink: 0; background: #1e293b; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; color: white;">🗓️</div>
         <div>
-          <h2 style="font-size: 18px; margin: 0 0 4px; font-weight: 900; color: #1e293b;">سامانه مدیریت برنامه شیفت</h2>
-          <p style="font-size: 13px; color: #64748b; margin: 0;">خوابگاه‌های دانشجویی — آبان ماه ۱۴۰۵</p>
+          <h2 style="font-size: 15px; margin: 0 0 3px; font-weight: 900; color: #1e293b;">سامانه مدیریت برنامه شیفت</h2>
+          <p style="font-size: 11px; color: #64748b; margin: 0;">خوابگاه‌های دانشجویی — آبان ماه ۱۴۰۵</p>
         </div>
       </div>
       
-      <p style="font-size: 14px; color: #334155; line-height: 1.9; margin: 0 0 20px; text-align: justify;">
-        کاربر گرامی، به سامانه مدیریت برنامه شیفت خوش آمدید. 
-        به منظور بهره‌مندی صحیح از امکانات سامانه، لطفاً پیش از اقدام به ثبت اطلاعات، 
-        دستورالعمل زیر را به دقت مطالعه فرمایید.
+      <p style="font-size: 12.5px; color: #334155; line-height: 1.8; margin: 0 0 14px; text-align: justify;">
+        کاربر گرامی، به سامانه مدیریت برنامه شیفت خوش آمدید. لطفاً پیش از ثبت اطلاعات، دستورالعمل زیر را مطالعه فرمایید.
       </p>
       
-      <div style="background: #f8fafc; padding: 20px; border-radius: 10px; margin-bottom: 25px; border: 1px solid #e2e8f0; border-right: 4px solid #3b82f6;">
-        <h3 style="font-size: 14px; font-weight: 800; color: #1e293b; margin: 0 0 15px;">📋 دستورالعمل استفاده:</h3>
-        
-        <div style="display: flex; gap: 12px; margin-bottom: 14px; align-items: flex-start;">
-          <span style="background: #1e293b; color: white; min-width: 22px; height: 22px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px; margin-top: 2px;">۱</span>
-          <span style="font-size: 13.5px; line-height: 1.7; color: #334155;">از بخش <b>«نام من»</b> در نوار بالای صفحه، نام خود را انتخاب نمایید.</span>
+      <div style="background: #f8fafc; padding: 14px; border-radius: 10px; margin-bottom: 14px; border: 1px solid #e2e8f0; border-right: 4px solid #3b82f6;">
+        <h3 style="font-size: 12.5px; font-weight: 800; color: #1e293b; margin: 0 0 10px;">📋 دستورالعمل:</h3>
+        <div style="display: flex; gap: 8px; margin-bottom: 10px; align-items: flex-start;">
+          <span style="background: #1e293b; color: white; min-width: 20px; height: 20px; border-radius: 5px; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; font-size: 10px; margin-top: 1px;">۱</span>
+          <span style="font-size: 11.5px; line-height: 1.6; color: #334155;">از بخش <b>«نام من»</b> در نوار بالا، نام خود را انتخاب کنید.</span>
         </div>
-        
-        <div style="display: flex; gap: 12px; margin-bottom: 14px; align-items: flex-start;">
-          <span style="background: #1e293b; color: white; min-width: 22px; height: 22px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px; margin-top: 2px;">۲</span>
-          <span style="font-size: 13.5px; line-height: 1.7; color: #334155;">شیفت‌های مورد نظر خود را در جدول مربوطه ثبت نمایید. <b>توجه:</b> ثبت شیفت برای سایر همکاران امکان‌پذیر نمی‌باشد.</span>
+        <div style="display: flex; gap: 8px; margin-bottom: 10px; align-items: flex-start;">
+          <span style="background: #1e293b; color: white; min-width: 20px; height: 20px; border-radius: 5px; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; font-size: 10px; margin-top: 1px;">۲</span>
+          <span style="font-size: 11.5px; line-height: 1.6; color: #334155;">شیفت‌های خود را در جدول ثبت کنید. ثبت شیفت برای دیگران امکان‌پذیر نیست.</span>
         </div>
-        
-        <div style="display: flex; gap: 12px; margin-bottom: 14px; align-items: flex-start;">
-          <span style="background: #1e293b; color: white; min-width: 22px; height: 22px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px; margin-top: 2px;">۳</span>
-          <span style="font-size: 13.5px; line-height: 1.7; color: #334155;">در صورت نیاز به ثبت مرخصی، از جدول اختصاصی واقع در پایین صفحه استفاده فرمایید.</span>
+        <div style="display: flex; gap: 8px; margin-bottom: 10px; align-items: flex-start;">
+          <span style="background: #1e293b; color: white; min-width: 20px; height: 20px; border-radius: 5px; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; font-size: 10px; margin-top: 1px;">۳</span>
+          <span style="font-size: 11.5px; line-height: 1.6; color: #334155;">برای ثبت مرخصی، از جدول پایین صفحه استفاده کنید.</span>
         </div>
-        
-        <div style="display: flex; gap: 12px; align-items: flex-start;">
-          <span style="background: #1e293b; color: white; min-width: 22px; height: 22px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px; margin-top: 2px;">۴</span>
-          <span style="font-size: 13.5px; line-height: 1.7; color: #334155;">پس از تکمیل اطلاعات، از طریق دکمه <b>«📊 خروجی اکسل»</b> فایل گزارش خود را دریافت نمایید.</span>
+        <div style="display: flex; gap: 8px; align-items: flex-start;">
+          <span style="background: #1e293b; color: white; min-width: 20px; height: 20px; border-radius: 5px; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; font-size: 10px; margin-top: 1px;">۴</span>
+          <span style="font-size: 11.5px; line-height: 1.6; color: #334155;">در پایان، فایل اکسل را با دکمه <b>«📊»</b> دریافت کنید.</span>
         </div>
       </div>
 
-      <div style="background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; padding: 12px 15px; margin-bottom: 25px; font-size: 12.5px; color: #92400e; line-height: 1.7;">
-        <b>🔔 توجه:</b> مسئولیت صحت اطلاعات ثبت‌شده بر عهده کاربر می‌باشد. لطفاً پیش از ثبت نهایی، اطلاعات خود را با دقت بررسی فرمایید.
+      <div style="background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; padding: 10px 12px; margin-bottom: 14px; font-size: 11px; color: #92400e; line-height: 1.6;">
+        <b>🔔 توجه:</b> مسئولیت صحت اطلاعات ثبت‌شده بر عهده کاربر است. لطفاً پیش از ثبت نهایی دقت فرمایید.
       </div>
       
-      <button id="welcomeBtn" style="width: 100%; padding: 13px; border: none; border-radius: 8px; background: #1e293b; color: white; font-family: inherit; font-size: 15px; font-weight: 700; cursor: pointer; transition: all 0.2s;">ورود به سامانه</button>
+      <button id="welcomeBtn" style="width: 100%; padding: 12px; border: none; border-radius: 8px; background: #1e293b; color: white; font-family: inherit; font-size: 13px; font-weight: 700; cursor: pointer;">ورود به سامانه</button>
       
-      <p style="font-size: 11px; color: #94a3b8; margin-top: 15px; margin-bottom: 0; text-align: center; line-height: 1.6;">
-        اداره امور خوابگاه‌ها — نسخه ۱۴۰۵<br>کلیه حقوق محفوظ است.
+      <p style="font-size: 10px; color: #94a3b8; margin-top: 10px; margin-bottom: 0; text-align: center; line-height: 1.5;">
+        اداره امور خوابگاه‌ها — نسخه ۱۴۰۵
       </p>
     </div>
   `;
 
   const styleEl = document.createElement('style');
-  styleEl.textContent = `
-    @keyframes welcomeFadeIn { from { opacity: 0; } to { opacity: 1; } }
-    @keyframes welcomeSlideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-  `;
+  styleEl.textContent = `@keyframes welcomeFadeIn { from { opacity: 0; } to { opacity: 1; } } @keyframes welcomeSlideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }`;
   document.head.appendChild(styleEl);
   document.body.appendChild(overlay);
 
   const closeBtn = document.getElementById('welcomeBtn');
-  closeBtn.addEventListener('mouseenter', () => { closeBtn.style.background = '#0f172a'; });
-  closeBtn.addEventListener('mouseleave', () => { closeBtn.style.background = '#1e293b'; });
   closeBtn.addEventListener('click', () => {
     overlay.style.animation = 'welcomeFadeIn 0.3s ease-out reverse';
     setTimeout(() => { overlay.remove(); }, 300);
   });
 }
 
-// اجرای برنامه
 window.onload = function() {
   init();
   setTimeout(showWelcomeMessage, 300);
