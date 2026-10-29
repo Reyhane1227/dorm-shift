@@ -75,15 +75,12 @@
   .warn-box { background: #fef3c7; color: #92400e; border-right: 5px solid var(--warn); }
   @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: none; } }
 
-  /* ====== راهنماها ====== */
   .guide-box {
     background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px;
     padding: 10px 12px; margin-bottom: 12px; font-size: 12px;
     color: #1e40af; line-height: 1.8; display: flex; align-items: flex-start; gap: 8px;
   }
-  body.dark-mode .guide-box {
-    background: #1e3a8a; color: #bfdbfe; border-color: #1e40af;
-  }
+  body.dark-mode .guide-box { background: #1e3a8a; color: #bfdbfe; border-color: #1e40af; }
   .guide-box .guide-icon { font-size: 16px; flex-shrink: 0; margin-top: 2px; }
   .guide-box b { color: #1e3a8a; }
   body.dark-mode .guide-box b { color: #dbeafe; }
@@ -100,47 +97,64 @@
   }
   .search-box input:focus { border-color: var(--primary-color); }
 
+  /* ======== دسکتاپ: جدول ======== */
   .table-container {
     background: var(--bg-card); border-radius: 12px;
     box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
     border: 1px solid var(--border-color); overflow-x: auto; margin-bottom: 15px;
-    -webkit-overflow-scrolling: touch;
+    display: block;
   }
-  .table-container::-webkit-scrollbar { height: 6px; }
-  .table-container::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
-  .table-container::-webkit-scrollbar-track { background: #f1f5f9; }
-
-  table.main-table { width: 100%; border-collapse: collapse; text-align: center; font-size: 11px; min-width: 800px; }
-  th, td { border: 1px solid var(--border-color); padding: 6px 4px; vertical-align: middle; transition: background 0.15s; }
-  th { font-weight: 900; font-size: 11px; color: var(--text-main); background: var(--th-bg); }
-  .th-zone { font-size: 12px; padding: 10px 4px; }
-  .th-shift { font-size: 10px; }
-
-  .bg-z1 { background: #e0f2fe !important; color: #0369a1 !important; }
-  .bg-z2 { background: #dcfce7 !important; color: #15803d !important; }
-  .bg-z3 { background: #ffedd5 !important; color: #c2410c !important; }
-  .bg-z4 { background: #fef9c3 !important; color: #a16207 !important; }
-  .bg-z5 { background: #f3e8ff !important; color: #6b21a8 !important; }
-
-  .day-cell { font-weight: 900; font-size: 11px; width: 65px; color: var(--text-main); }
-  .date-cell { font-size: 10px; width: 65px; color: var(--text-muted); }
-
+  table.main-table { width: 100%; border-collapse: collapse; text-align: center; font-size: 13px; }
+  th, td { border: 1px solid var(--border-color); padding: 10px 6px; vertical-align: middle; }
+  th { font-weight: 900; font-size: 13px; color: var(--text-main); background: var(--th-bg); }
+  .day-cell { font-weight: 900; font-size: 14px; width: 80px; color: var(--text-main); }
+  .date-cell { font-size: 12px; width: 80px; color: var(--text-muted); }
   tr.is-friday td { background: #f1f5f9; }
   body.dark-mode tr.is-friday td { background: #1e293b; }
   tr.is-friday .day-cell, tr.is-friday .date-cell { color: #ef4444; }
 
+  /* ======== موبایل: کارت‌ها ======== */
+  .mobile-cards { display: none; }
+  .mobile-card {
+    background: var(--bg-card); border: 1px solid var(--border-color);
+    border-radius: 12px; padding: 12px; margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+  .mobile-card.friday { background: #fef3c7; }
+  body.dark-mode .mobile-card.friday { background: #4c1d1d; }
+  .mobile-card .card-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid var(--border-color);
+  }
+  .mobile-card .card-day { font-weight: 900; font-size: 14px; color: var(--text-main); }
+  .mobile-card.friday .card-day { color: #dc2626; }
+  .mobile-card .card-date { font-size: 11px; color: var(--text-muted); }
+  .mobile-card .card-zones { display: flex; flex-direction: column; gap: 8px; }
+  .mobile-zone { padding: 8px; border-radius: 8px; background: var(--bg-body); }
+  .mobile-zone-title { font-weight: 800; font-size: 12px; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+  .mobile-zone-shifts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .mobile-zone-shifts.golshan { grid-template-columns: repeat(2, 1fr); }
+  .mobile-shift-item { display: flex; flex-direction: column; gap: 4px; }
+  .mobile-shift-label { font-size: 10px; font-weight: 700; color: var(--text-muted); text-align: center; }
+  .mobile-shift-select {
+    width: 100%; padding: 8px 4px; border: 1px solid var(--border-color);
+    border-radius: 6px; font-family: inherit; font-size: 11px; font-weight: 700;
+    text-align: center; background: var(--input-bg); color: var(--text-main);
+    -webkit-appearance: none; appearance: none; outline: none;
+  }
+  .mobile-shift-select.mine { background: #bbf7d0 !important; color: #166534 !important; border-color: #86efac; }
+  .mobile-shift-select.filled { border-color: #86efac; }
+  .mobile-shift-select:disabled { opacity: 0.75; }
+
+  /* Select styles (desktop) */
   select.s-cell {
-    width: 100%; height: 34px; border: 1px solid transparent; background: transparent;
-    font-family: inherit; font-size: 11px; font-weight: 700; text-align: center; text-align-last: center;
+    width: 100%; height: 38px; border: 1px solid transparent; background: transparent;
+    font-family: inherit; font-size: 12px; font-weight: 700; text-align: center; text-align-last: center;
     outline: none; cursor: pointer; appearance: none; -webkit-appearance: none; color: var(--text-main); border-radius: 6px;
   }
   select.s-cell:hover:not(:disabled) { background: rgba(0,0,0,0.03); }
   select.s-cell:focus { border-color: var(--primary-color); background: var(--bg-card); }
   select.s-cell.mine { background: #bbf7d0 !important; color: #166534 !important; border-color: #86efac; }
-  select.s-cell.dup { background: #e9d5ff !important; color: #6b21a8 !important; border-color: #d8b4fe; }
-  select.s-cell.conflict { background: #fecaca !important; color: #991b1b !important; border-color: #fca5a5; }
-  select.s-cell.multi { background: #fed7aa !important; color: #9a3412 !important; border-color: #fdba74; }
-  select.s-cell.night-conflict { background: #fca5a5 !important; color: #7f1d1d !important; border-color: #ef4444; }
   select.s-cell.filled { border-color: #86efac; }
   select.s-cell:disabled { opacity: 0.75; cursor: not-allowed; }
 
@@ -151,16 +165,11 @@
   }
   .section-box h3 { font-size: 13px; margin-bottom: 10px; color: var(--primary-color); border-bottom: 2px solid var(--border-color); padding-bottom: 6px; }
 
+  /* Leave Grid - Mobile */
   .leave-grid-wrapper { overflow-x: hidden; }
-  .leave-grid {
-    display: grid; grid-template-columns: 1fr; gap: 8px; align-items: center;
-  }
+  .leave-grid { display: grid; grid-template-columns: 1fr; gap: 8px; }
   .leave-header { display: none; }
-  .leave-name { 
-    font-weight: bold; text-align: center; font-size: 12px; 
-    background: var(--th-bg); padding: 8px; border-radius: 6px;
-    border: 1px solid var(--border-color);
-  }
+  .leave-name { font-weight: bold; text-align: center; font-size: 12px; background: var(--th-bg); padding: 8px; border-radius: 6px; border: 1px solid var(--border-color); }
   .leave-select {
     width: 100%; height: 38px; border: 1px solid var(--border-color); border-radius: 6px;
     font-family: inherit; font-size: 12px; text-align: center; outline: none; 
@@ -169,35 +178,36 @@
   }
   .leave-select.locked { opacity: 0.6; cursor: not-allowed; }
 
-  .stats-table-wrapper { overflow-x: auto; border-radius: 8px; border: 1px solid var(--border-color); -webkit-overflow-scrolling: touch; }
-  .stats-table-wrapper::-webkit-scrollbar { height: 6px; }
-  .stats-table-wrapper::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
-  table.stats-table { width: 100%; border-collapse: collapse; text-align: center; font-size: 10px; min-width: 600px; }
-  table.stats-table th { background: var(--bg-header); color: white; padding: 8px 3px; font-size: 10px; border: 1px solid var(--border-color); }
-  table.stats-table td { padding: 6px 3px; border: 1px solid var(--border-color); }
+  /* Stats - Mobile: cards */
+  .stats-mobile { display: none; }
+  .stat-card {
+    background: var(--bg-body); border: 1px solid var(--border-color);
+    border-radius: 10px; padding: 12px; margin-bottom: 10px;
+  }
+  .stat-card-name { font-weight: 900; font-size: 14px; color: var(--primary-color); margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid var(--border-color); }
+  .stat-row { display: flex; justify-content: space-between; padding: 4px 0; font-size: 12px; }
+  .stat-row-label { color: var(--text-muted); }
+  .stat-row-value { font-weight: 700; }
+  .stat-row-value.plus { color: #059669; }
+  .stat-row-value.minus { color: #dc2626; }
+
+  /* Stats Desktop Table */
+  .stats-table-wrapper { overflow-x: auto; border-radius: 8px; border: 1px solid var(--border-color); display: block; }
+  table.stats-table { width: 100%; border-collapse: collapse; text-align: center; font-size: 12px; min-width: 700px; }
+  table.stats-table th { background: var(--bg-header); color: white; padding: 10px 5px; font-size: 11px; border: 1px solid var(--border-color); }
+  table.stats-table td { padding: 8px 5px; border: 1px solid var(--border-color); }
   table.stats-table tr:nth-child(even) { background: var(--th-bg); }
-  .stat-name { font-weight: 900; text-align: right; padding-right: 8px !important; color: var(--primary-color); white-space: nowrap; }
+  .stat-name { font-weight: 900; text-align: right; padding-right: 12px !important; color: var(--primary-color); white-space: nowrap; }
   .val-plus { color: #059669; font-weight: bold; background: #d1fae5; }
   .val-minus { color: #dc2626; font-weight: bold; background: #fee2e2; }
   body.dark-mode .val-plus { background: #064e3b; color: #a7f3d0; }
   body.dark-mode .val-minus { background: #7f1d1d; color: #fecaca; }
 
-  .modal-overlay {
-    display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.6); z-index: 1000; justify-content: center; align-items: center;
-    padding: 15px; backdrop-filter: blur(4px);
-  }
+  /* Modals */
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 1000; justify-content: center; align-items: center; padding: 15px; backdrop-filter: blur(4px); }
   .modal-overlay.active { display: flex; }
-  .modal-content {
-    background: var(--bg-card); color: var(--text-main);
-    width: 100%; max-width: 600px; border-radius: 16px;
-    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2); overflow: hidden;
-    max-height: 90vh; display: flex; flex-direction: column;
-  }
-  .modal-header {
-    background: var(--bg-header); color: white; padding: 14px 18px;
-    display: flex; justify-content: space-between; align-items: center;
-  }
+  .modal-content { background: var(--bg-card); color: var(--text-main); width: 100%; max-width: 600px; border-radius: 16px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2); overflow: hidden; max-height: 90vh; display: flex; flex-direction: column; }
+  .modal-header { background: var(--bg-header); color: white; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; }
   .modal-header h2 { font-size: 15px; margin: 0; }
   .modal-close { background: none; border: none; color: white; font-size: 26px; cursor: pointer; line-height: 1; opacity: 0.8; padding: 0 5px; }
   .modal-body { padding: 18px; overflow-y: auto; font-size: 13px; line-height: 1.8; }
@@ -212,20 +222,12 @@
   .btn-del { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; padding: 6px 10px; border-radius: 6px; cursor: pointer; font-family: inherit; font-weight: bold; font-size: 12px; }
   .btn-secondary { background: var(--th-bg); color: var(--text-main); border: 1px solid var(--border-color); padding: 8px 12px; border-radius: 6px; cursor: pointer; font-family: inherit; font-weight: bold; font-size: 12px; }
 
-  .info-banner {
-    background: #e0f2fe; color: #0369a1; padding: 10px 12px; border-radius: 8px; margin-bottom: 12px; font-size: 12px; border-right: 4px solid #3b82f6; line-height: 1.7;
-  }
+  .info-banner { background: #e0f2fe; color: #0369a1; padding: 10px 12px; border-radius: 8px; margin-bottom: 12px; font-size: 12px; border-right: 4px solid #3b82f6; line-height: 1.7; }
   body.dark-mode .info-banner { background: #1e3a8a; color: #bfdbfe; border-right-color: #60a5fa; }
 
-  .dialog-overlay {
-    display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5);
-    z-index: 2000; justify-content: center; align-items: center; padding: 15px; backdrop-filter: blur(4px);
-  }
+  .dialog-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 2000; justify-content: center; align-items: center; padding: 15px; backdrop-filter: blur(4px); }
   .dialog-overlay.active { display: flex; }
-  .dialog-box {
-    background: var(--bg-card); color: var(--text-main); border-radius: 14px;
-    max-width: 400px; width: 100%; padding: 20px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.25);
-  }
+  .dialog-box { background: var(--bg-card); color: var(--text-main); border-radius: 14px; max-width: 400px; width: 100%; padding: 20px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.25); }
   .dialog-box h3 { font-size: 15px; margin-bottom: 8px; }
   .dialog-box p { font-size: 13px; margin-bottom: 14px; color: var(--text-muted); white-space: pre-line; line-height: 1.7; }
   .dialog-box input { width: 100%; padding: 10px; border: 1px solid var(--border-color); border-radius: 8px; font-family: inherit; font-size: 13px; margin-bottom: 12px; background: var(--input-bg); color: var(--text-main); }
@@ -237,6 +239,17 @@
 
   .col-hidden { display: none !important; }
 
+  /* ===== Responsive ===== */
+  @media (max-width: 767px) {
+    /* موبایل: جدول رو مخفی کن، کارت‌ها رو نشون بده */
+    .table-container { display: none; }
+    .mobile-cards { display: block; }
+    .stats-table-wrapper { display: none; }
+    .stats-mobile { display: block; }
+    
+    .section-box h3 { font-size: 14px; }
+  }
+
   @media (min-width: 768px) {
     body { padding: 20px; font-size: 14px; }
     .app-header { flex-direction: row; justify-content: space-between; text-align: right; padding: 16px 24px; }
@@ -247,14 +260,6 @@
     .control-box select { font-size: 13px; }
     .tool-btn { width: 38px; height: 38px; font-size: 18px; }
     .guide-box { font-size: 13px; padding: 12px 15px; }
-    table.main-table { font-size: 13px; min-width: auto; }
-    th, td { padding: 10px 6px; }
-    th { font-size: 13px; }
-    .th-zone { font-size: 14px; padding: 12px 6px; }
-    .th-shift { font-size: 12px; }
-    .day-cell { font-size: 14px; width: 80px; }
-    .date-cell { font-size: 12px; width: 80px; }
-    select.s-cell { height: 38px; font-size: 12px; }
     .section-box { padding: 20px; }
     .section-box h3 { font-size: 16px; margin-bottom: 15px; padding-bottom: 8px; }
     
@@ -263,11 +268,6 @@
     .leave-header { display: block; font-weight: bold; text-align: center; font-size: 12px; padding: 8px; background: var(--th-bg); border-radius: 6px; }
     .leave-name { text-align: right; padding-right: 10px; font-size: 13px; background: none; border: none; padding: 0; }
     .leave-select { height: 32px; font-size: 12px; }
-    
-    table.stats-table { font-size: 12px; min-width: 700px; }
-    table.stats-table th { padding: 10px 5px; font-size: 11px; }
-    table.stats-table td { padding: 8px 5px; }
-    .stat-name { padding-right: 12px !important; }
     
     .modal-content { max-width: 600px; }
     .modal-header { padding: 16px 24px; }
@@ -326,6 +326,7 @@
     <input type="text" id="searchInput" placeholder="🔍 جستجوی نام همکار..." oninput="filterPersonnel()">
   </div>
 
+  <!-- ======= دسکتاپ: جدول ======= -->
   <div class="table-container">
     <table class="main-table" id="mainTable">
       <thead>
@@ -339,13 +340,16 @@
     </table>
   </div>
 
+  <!-- ======= موبایل: کارت‌ها ======= -->
+  <div class="mobile-cards" id="mobileCards"></div>
+
+  <!-- ======= مرخصی ======= -->
   <div class="section-box">
     <h3>🏖️ ثبت مرخصی</h3>
-    <!-- راهنمای مرخصی -->
     <div class="guide-box">
       <span class="guide-icon">💡</span>
       <div>
-        <b>راهنمای ثبت مرخصی:</b> برای هر روز از ماه، یک مرخصی می‌توانید ثبت کنید. هر مرخصی معادل <b>۷ ساعت و ۳۳ دقیقه</b> است. توجه: در روزهایی که شیفت دارید، امکان ثبت مرخصی وجود ندارد. روزهای جمعه نیز قابل انتخاب نیستند.
+        <b>راهنمای ثبت مرخصی:</b> برای هر روز از ماه، یک مرخصی می‌توانید ثبت کنید. هر مرخصی معادل <b>۷ ساعت و ۳۳ دقیقه</b> است. در روزهایی که شیفت دارید، امکان ثبت مرخصی وجود ندارد. روزهای جمعه نیز قابل انتخاب نیستند.
       </div>
     </div>
     <div class="leave-grid-wrapper">
@@ -353,15 +357,17 @@
     </div>
   </div>
 
+  <!-- ======= آمار ======= -->
   <div class="section-box">
     <h3>📊 آمار کارکرد و ساعت‌ها</h3>
-    <!-- راهنمای آمار -->
     <div class="guide-box">
       <span class="guide-icon">💡</span>
       <div>
         <b>راهنمای محاسبه:</b> ساعت کاری هر شیفت: صبح (۶.۵ ساعت)، عصر (۵.۵ ساعت)، شب (۱۲ ساعت). ضریب جمعه طبق قانون محاسبه می‌شود. هر مرخصی معادل ۷:۳۳ ساعت است.
       </div>
     </div>
+    
+    <!-- دسکتاپ: جدول آمار -->
     <div class="stats-table-wrapper">
       <table class="stats-table" id="statsTable">
         <thead>
@@ -373,6 +379,9 @@
         <tbody id="statsBody"></tbody>
       </table>
     </div>
+
+    <!-- موبایل: کارت‌های آمار -->
+    <div class="stats-mobile" id="statsMobile"></div>
   </div>
 
 </div>
@@ -478,7 +487,7 @@ const MONTH = "آبان";
 const DAYS = 30;
 const BASE_DATE = new Date(2026, 9, 23);
 const HOURS = { "صبح": 6.5, "عصر": 5.5, "شب": 12 };
-const LEAVE_HOURS = 7.55; // ۷ ساعت و ۳۳ دقیقه
+const LEAVE_HOURS = 7.55;
 const MAX_LEAVE = 5;
 const WEEKDAYS = ["یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنجشنبه", "جمعه", "شنبه"];
 
@@ -491,7 +500,7 @@ const DEFAULT_PERSONNEL = [
   { name: "خانم چراغ چشم", req: 184 }, { name: "خانم امیری", req: 184 }
 ].sort((a, b) => a.name.localeCompare(b.name, 'fa'));
 
-const DEFAULT_ADMIN_HASH = "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f"; // 12345678
+const DEFAULT_ADMIN_HASH = "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f";
 
 let PERSONNEL = [];
 let state = { shifts: {}, leaves: {} };
@@ -509,6 +518,14 @@ const ZONES = [
   { name: "گلشن", cols: ["صبح", "عصر"], cls: "bg-z5" }
 ];
 
+const ZONE_COLORS = {
+  "بهارستان ۱": "#0369a1",
+  "بهارستان ۲": "#15803d",
+  "بهارستان ۳": "#c2410c",
+  "نجمه خاتون": "#a16207",
+  "گلشن": "#6b21a8"
+};
+
 function getDayInfo(dayIdx) {
   const d = new Date(BASE_DATE);
   d.setDate(BASE_DATE.getDate() + dayIdx);
@@ -523,7 +540,7 @@ async function sha256(text) {
 
 function filterPersonnel() {
   const q = document.getElementById("searchInput").value.trim().toLowerCase();
-  document.querySelectorAll("select.s-cell").forEach(sel => {
+  document.querySelectorAll("select.s-cell, select.mobile-shift-select").forEach(sel => {
     Array.from(sel.options).forEach(opt => {
       if (!opt.value) return;
       opt.style.display = opt.textContent.toLowerCase().includes(q) ? "" : "none";
@@ -565,7 +582,6 @@ function exportExcelFull() {
   const wb = XLSX.utils.book_new();
   wb.Workbook = { Views: [{ RTL: true }] };
 
-  // Sheet 1
   const sheet1 = [["روز", "تاریخ"]];
   ZONES.forEach(z => z.cols.forEach(() => sheet1[0].push(z.name)));
   const row2 = ["", ""];
@@ -603,7 +619,6 @@ function exportExcelFull() {
   ws1["!freeze"] = { xSplit: 2, ySplit: 2 };
   XLSX.utils.book_append_sheet(wb, ws1, "برنامه شیفت");
 
-  // Sheet 2
   const sheet2 = [["نام", "موظفی", "صبح", "عصر", "شب", "تعطیلات", "مرخصی", "کارکرد کل", "اضافه", "کسر"]];
   const morningHours = {}, eveningHours = {}, nightHours = {}, holidayExtra = {}, leaveCount = {};
   PERSONNEL.forEach(p => { morningHours[p.name] = 0; eveningHours[p.name] = 0; nightHours[p.name] = 0; holidayExtra[p.name] = 0; leaveCount[p.name] = 0; });
@@ -641,7 +656,6 @@ function exportExcelFull() {
   ws2["!freeze"] = { ySplit: 1 };
   XLSX.utils.book_append_sheet(wb, ws2, "آمار کارکرد");
 
-  // Sheet 3
   const sheet3 = [["نام", "مرخصی ۱", "مرخصی ۲", "مرخصی ۳", "مرخصی ۴", "مرخصی ۵", "تعداد"]];
   PERSONNEL.forEach(p => {
     const personLeaves = state.leaves[p.name] || {};
@@ -666,7 +680,6 @@ function exportExcelFull() {
   ws3["!freeze"] = { ySplit: 1 };
   XLSX.utils.book_append_sheet(wb, ws3, "مرخصی‌ها");
 
-  // Sheet 4
   const sheet4 = [["ردیف", "نام", "موظفی (ساعت)"]];
   PERSONNEL.forEach((p, i) => sheet4.push([i + 1, p.name, p.req]));
   const ws4 = XLSX.utils.aoa_to_sheet(sheet4);
@@ -681,7 +694,6 @@ function exportExcelFull() {
   ws4["!freeze"] = { ySplit: 1 };
   XLSX.utils.book_append_sheet(wb, ws4, "پرسنل");
 
-  // Sheet 5
   let totalLeave = 0;
   Object.values(state.leaves).forEach(l => totalLeave += Object.keys(l).length);
   let totalAllHours = 0;
@@ -820,7 +832,7 @@ async function addStaff() {
   if (PERSONNEL.some(p => p.name === name)) { await alertDlg("تکراری است."); return; }
   if (isNaN(req) || req < 0) { await alertDlg("موظفی معتبر نیست."); return; }
   PERSONNEL.push({ name, req }); PERSONNEL.sort((a, b) => a.name.localeCompare(b.name, 'fa'));
-  savePersonnel(); renderStaffList(); updateNameSelect(); renderTable(); renderLeaveGrid(); renderStats();
+  savePersonnel(); renderStaffList(); updateNameSelect(); renderAll();
   nameInput.value = ""; reqInput.value = "175";
 }
 
@@ -833,8 +845,7 @@ async function removeStaff(index) {
   Object.keys(state.shifts).forEach(k => { if (state.shifts[k] === p.name) delete state.shifts[k]; });
   delete state.leaves[p.name];
   savePersonnel(); save();
-  renderStaffList(); updateNameSelect(); renderTable(); renderLeaveGrid(); renderStats();
-  validateAll();
+  renderStaffList(); updateNameSelect(); renderAll();
 }
 
 function renderStaffList() {
@@ -849,7 +860,7 @@ function renderStaffList() {
     inp.addEventListener("change", () => {
       if (!isAdmin) return;
       const idx = +inp.dataset.idx, v = parseFloat(inp.value);
-      if (!isNaN(v) && v >= 0) { PERSONNEL[idx].req = v; savePersonnel(); renderStats(); }
+      if (!isNaN(v) && v >= 0) { PERSONNEL[idx].req = v; savePersonnel(); renderAll(); }
       else inp.value = PERSONNEL[idx].req;
     });
   });
@@ -866,7 +877,15 @@ function updateNameSelect() {
   if (savedName && PERSONNEL.some(p => p.name === savedName)) sel.value = savedName;
 }
 
-/* ---------- Table ---------- */
+/* ---------- Render All ---------- */
+function renderAll() {
+  renderTable();
+  renderMobileCards();
+  renderLeaveGrid();
+  renderStats();
+}
+
+/* ---------- Desktop Table ---------- */
 function zoneVisible(zoneName) { return !selectedZone || selectedZone === zoneName; }
 
 function renderTable() {
@@ -909,12 +928,71 @@ function renderTable() {
         const owner = state.shifts[key] || "";
         if (!canEditShiftCell(owner)) { sel.disabled = true; sel.classList.add("locked"); }
         else sel.addEventListener("change", () => onShiftChange(sel));
+        if (sel.value === document.getElementById("myName").value && sel.value !== "") sel.classList.add("mine");
+        if (sel.value !== "") sel.classList.add("filled");
         td.appendChild(sel); tr.appendChild(td);
       });
     });
     tbody.appendChild(tr);
   }
-  validateAll();
+}
+
+/* ---------- Mobile Cards ---------- */
+function renderMobileCards() {
+  const container = document.getElementById("mobileCards"); container.innerHTML = "";
+  const myName = document.getElementById("myName").value;
+
+  for (let d = 0; d < DAYS; d++) {
+    const info = getDayInfo(d);
+    const card = document.createElement("div");
+    card.className = "mobile-card" + (info.isFriday ? " friday" : "");
+
+    let zonesHtml = "";
+    ZONES.forEach(zone => {
+      if (!zoneVisible(zone.name)) return;
+      const isGolshan = zone.name === "گلشن";
+      let shiftsHtml = "";
+      zone.cols.forEach(shiftType => {
+        const key = d + "|" + zone.name + "|" + shiftType;
+        const val = state.shifts[key] || "";
+        const owner = val;
+        const canEdit = canEditShiftCell(owner);
+        let opts = `<option value="">—</option>`;
+        PERSONNEL.forEach(p => {
+          const selected = p.name === val ? "selected" : "";
+          opts += `<option value="${p.name}" ${selected}>${p.name}</option>`;
+        });
+        const mineClass = val === myName && val !== "" ? "mine" : "";
+        const filledClass = val !== "" ? "filled" : "";
+        const dis = !canEdit ? "disabled" : "";
+        shiftsHtml += `
+          <div class="mobile-shift-item">
+            <div class="mobile-shift-label">${shiftType}</div>
+            <select class="mobile-shift-select ${mineClass} ${filledClass}" data-key="${key}" data-day="${d}" data-zone="${zone.name}" data-shift="${shiftType}" ${dis}>${opts}</select>
+          </div>`;
+      });
+      zonesHtml += `
+        <div class="mobile-zone" style="border-right: 4px solid ${ZONE_COLORS[zone.name]};">
+          <div class="mobile-zone-title" style="color: ${ZONE_COLORS[zone.name]};">
+            <span>${zone.name}</span>
+          </div>
+          <div class="mobile-zone-shifts ${isGolshan ? 'golshan' : ''}">${shiftsHtml}</div>
+        </div>`;
+    });
+
+    card.innerHTML = `
+      <div class="card-header">
+        <div class="card-day">${info.weekday}</div>
+        <div class="card-date">${d + 1} ${MONTH}</div>
+      </div>
+      <div class="card-zones">${zonesHtml}</div>
+    `;
+    container.appendChild(card);
+
+    card.querySelectorAll("select.mobile-shift-select").forEach(sel => {
+      sel.addEventListener("change", () => onShiftChange(sel));
+    });
+  }
 }
 
 function findPersonShiftOnDay(person, dayIdx) {
@@ -958,7 +1036,7 @@ async function onShiftChange(sel) {
   hideAlert();
 
   if (!canEditShiftCell(prevOwner)) { await alertDlg("⛔ این خانه برای دیگری است."); sel.value = prevOwner; return; }
-  if (!val) { delete state.shifts[key]; save(); validateAll(); renderStats(); return; }
+  if (!val) { delete state.shifts[key]; save(); renderAll(); return; }
   let personName = val;
   if (!isAdmin) {
     const myName = document.getElementById("myName").value;
@@ -970,44 +1048,7 @@ async function onShiftChange(sel) {
   state.shifts[key] = personName;
   const issues = checkRestRules(personName, d);
   if (issues.length > 0) { state.shifts[key] = prev || ""; sel.value = prev || ""; await alertDlg(`⛔ قوانین:\n• ` + issues.map(i => i.msg).join("\n• ")); return; }
-  save(); validateAll(); renderStats();
-}
-
-function validateAll() {
-  document.querySelectorAll("select.s-cell").forEach(el => el.classList.remove("mine", "dup", "conflict", "multi", "night-conflict", "filled"));
-  const myName = document.getElementById("myName").value;
-  if (myName) document.querySelectorAll("select.s-cell").forEach(el => { if (el.value === myName) el.classList.add("mine"); });
-  document.querySelectorAll("select.s-cell").forEach(el => { if (el.value !== "") el.classList.add("filled"); });
-  for (let d = 0; d < DAYS; d++) {
-    const map = {};
-    ZONES.forEach(z => z.cols.forEach(s => {
-      const key = d + "|" + z.name + "|" + s;
-      const person = state.shifts[key];
-      if (!person) return;
-      const k = person + "|" + s;
-      if (!map[k]) map[k] = [];
-      const el = document.querySelector(`select[data-key="${key}"]`);
-      if (el) map[k].push(el);
-    }));
-    Object.values(map).forEach(list => { if (list.length > 1) list.forEach(el => el.classList.add("dup")); });
-  }
-  const allPeople = new Set(Object.values(state.shifts).filter(v => v));
-  allPeople.forEach(person => {
-    for (let d = 0; d < DAYS; d++) {
-      const issues = checkRestRules(person, d);
-      if (issues.length === 0) continue;
-      const todayShifts = findPersonShiftOnDay(person, d);
-      ZONES.forEach(z => z.cols.forEach(s => {
-        if (!todayShifts.includes(s)) return;
-        const key = d + "|" + z.name + "|" + s;
-        if (state.shifts[key] !== person) return;
-        const el = document.querySelector(`select[data-key="${key}"]`);
-        if (!el) return;
-        const cat = issues.some(i => i.type.startsWith("night")) ? "night-conflict" : "multi";
-        el.classList.add(cat);
-      }));
-    }
-  });
+  save(); renderAll();
 }
 
 /* ---------- Leave grid ---------- */
@@ -1070,8 +1111,16 @@ function calcShiftHours(shiftType, dayIdx, requiredHours) {
 }
 
 function renderStats() {
-  const tbody = document.getElementById("statsBody"); tbody.innerHTML = ""; hideWarning();
-  if (PERSONNEL.length === 0) { tbody.innerHTML = "<tr><td colspan='10' style='text-align:center; padding:20px;'>ابتدا پرسنل را ثبت کنید.</td></tr>"; return; }
+  const tbody = document.getElementById("statsBody"); tbody.innerHTML = "";
+  const mobileContainer = document.getElementById("statsMobile"); mobileContainer.innerHTML = "";
+  hideWarning();
+
+  if (PERSONNEL.length === 0) { 
+    tbody.innerHTML = "<tr><td colspan='10' style='text-align:center; padding:20px;'>ابتدا پرسنل را ثبت کنید.</td></tr>"; 
+    mobileContainer.innerHTML = "<p style='text-align:center; color:var(--text-muted); padding:20px;'>ابتدا پرسنل را ثبت کنید.</p>";
+    return; 
+  }
+
   const morningHours = {}, eveningHours = {}, nightHours = {}, holidayExtra = {}, leaveCount = {};
   PERSONNEL.forEach(p => { morningHours[p.name] = 0; eveningHours[p.name] = 0; nightHours[p.name] = 0; holidayExtra[p.name] = 0; leaveCount[p.name] = 0; });
   Object.keys(state.leaves).forEach(person => { if (leaveCount[person] !== undefined) leaveCount[person] = Object.keys(state.leaves[person]).length; });
@@ -1096,16 +1145,42 @@ function renderStats() {
     const total = Math.round((totalShift + leaveH) * 10) / 10;
     const diff = Math.round((total - p.req) * 10) / 10;
     if (p.req === 184 && diff > 30) overworked184.push(p.name + " (" + diff + " ساعت)");
+
+    // Desktop row
     const tr = document.createElement("tr");
     tr.innerHTML = `<td class="stat-name">${p.name}</td><td style="font-weight:bold;">${p.req}</td><td>${morningHours[p.name]}</td><td>${eveningHours[p.name]}</td><td>${nightHours[p.name]}</td><td style="color:#b45309; font-weight:bold;">${Math.round(holidayExtra[p.name] * 10) / 10}</td><td>${leaveH}</td><td style="font-weight:bold;">${total}</td><td class="${diff > 0 ? 'val-plus' : ''}">${diff > 0 ? diff : '0'}</td><td class="${diff < 0 ? 'val-minus' : ''}">${diff < 0 ? Math.abs(diff) : '0'}</td>`;
     tbody.appendChild(tr);
+
+    // Mobile card
+    const card = document.createElement("div"); card.className = "stat-card";
+    card.innerHTML = `
+      <div class="stat-card-name">${p.name}</div>
+      <div class="stat-row"><span class="stat-row-label">موظفی:</span><span class="stat-row-value">${p.req} ساعت</span></div>
+      <div class="stat-row"><span class="stat-row-label">صبح:</span><span class="stat-row-value">${morningHours[p.name]} ساعت</span></div>
+      <div class="stat-row"><span class="stat-row-label">عصر:</span><span class="stat-row-value">${eveningHours[p.name]} ساعت</span></div>
+      <div class="stat-row"><span class="stat-row-label">شب:</span><span class="stat-row-value">${nightHours[p.name]} ساعت</span></div>
+      <div class="stat-row"><span class="stat-row-label">تعطیلات:</span><span class="stat-row-value" style="color:#b45309;">${Math.round(holidayExtra[p.name] * 10) / 10} ساعت</span></div>
+      <div class="stat-row"><span class="stat-row-label">مرخصی:</span><span class="stat-row-value">${leaveH} ساعت</span></div>
+      <div class="stat-row" style="border-top:1px solid var(--border-color); padding-top:6px; margin-top:4px;"><span class="stat-row-label" style="font-weight:700; color:var(--text-main);">کارکرد کل:</span><span class="stat-row-value">${total} ساعت</span></div>
+      <div class="stat-row"><span class="stat-row-label">اضافه:</span><span class="stat-row-value ${diff > 0 ? 'plus' : ''}">${diff > 0 ? diff : '0'} ساعت</span></div>
+      <div class="stat-row"><span class="stat-row-label">کسر:</span><span class="stat-row-value ${diff < 0 ? 'minus' : ''}">${diff < 0 ? Math.abs(diff) : '0'} ساعت</span></div>
+    `;
+    mobileContainer.appendChild(card);
   });
   if (overworked184.length > 0) showWarning("⚠️ هشدار اضافه کار (۱۸۴ ساعتی‌ها):<br><b>" + overworked184.join(" ، ") + "</b>");
 }
 
 /* ---------- Misc ---------- */
-function onNameChange() { const n = document.getElementById("myName").value; localStorage.setItem("myName", n); renderTable(); }
-function onZoneChange() { selectedZone = document.getElementById("myZone").value; localStorage.setItem("myZone", selectedZone); renderTable(); }
+function onNameChange() { 
+  const n = document.getElementById("myName").value; 
+  localStorage.setItem("myName", n); 
+  renderAll(); 
+}
+function onZoneChange() { 
+  selectedZone = document.getElementById("myZone").value; 
+  localStorage.setItem("myZone", selectedZone); 
+  renderAll(); 
+}
 function toggleDarkMode() { document.body.classList.toggle("dark-mode"); }
 function openHelp() { document.getElementById("helpModal").classList.add("active"); }
 function closeHelp() { document.getElementById("helpModal").classList.remove("active"); }
@@ -1138,7 +1213,7 @@ function init() {
   if (savedZone) { document.getElementById("myZone").value = savedZone; selectedZone = savedZone; }
   const d = localStorage.getItem("shiftData");
   if (d) { try { state = JSON.parse(d); if (!state.shifts) state.shifts = {}; if (!state.leaves) state.leaves = {}; } catch (e) {} }
-  updateAdminUI(); renderTable(); renderLeaveGrid(); renderStats();
+  updateAdminUI(); renderAll();
 }
 function save() { localStorage.setItem("shiftData", JSON.stringify(state)); }
 
