@@ -357,7 +357,7 @@
     </div>
     <div class="modal-body">
       <div id="adminLoginBox">
-        <div class="info-banner">برای دسترسی به امکانات مدیریتی، رمز ادمین را وارد کنید (رمز پیش‌فرض: 1234).</div>
+        <div class="info-banner">برای دسترسی به امکانات مدیریتی، رمز ادمین را وارد کنید.</div>
         <input type="password" id="adminPasswordInput" placeholder="رمز ادمین" style="width:100%; padding:10px; border:1px solid var(--border-color); border-radius:8px; font-family:inherit; margin-bottom:12px; background:var(--input-bg); color:var(--text-main);">
         <button class="btn-primary" style="padding:10px 20px; background:var(--primary-color); color:white; border:none; border-radius:8px; cursor:pointer; font-family:inherit; font-weight:bold;" onclick="submitAdminLogin()">ورود</button>
       </div>
@@ -387,7 +387,7 @@
       </ul>
       <h3>🔑 ادمین</h3>
       <ul>
-        <li>با دکمه 🔑 و وارد کردن رمز (پیش‌فرض `1234`)، وارد حساب ادمین شوید.</li>
+        <li>با دکمه 🔑 و وارد کردن رمز، وارد حساب ادمین شوید.</li>
         <li>ادمین می‌تواند شیفت و مرخصی <b>همه افراد</b> را ثبت/ویرایش کند.</li>
         <li>مدیریت پرسنل فقط برای ادمین است.</li>
       </ul>
@@ -432,7 +432,8 @@ const DEFAULT_PERSONNEL = [
   { name: "خانم چراغ چشم", req: 184 }, { name: "خانم امیری", req: 184 }
 ].sort((a, b) => a.name.localeCompare(b.name, 'fa'));
 
-const DEFAULT_ADMIN_HASH = "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9"; // 1234
+// هش رمز 12345678
+const DEFAULT_ADMIN_HASH = "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f";
 
 let PERSONNEL = [];
 let state = { shifts: {}, leaves: {} };
@@ -1073,12 +1074,107 @@ function init() {
 }
 function save() { localStorage.setItem("shiftData", JSON.stringify(state)); }
 
-// پیام خوش‌آمدگویی
+// ==========================================
+// پیام خوش‌آمدگویی رسمی و اداری
+// ==========================================
+function showWelcomeMessage() {
+  const overlay = document.createElement('div');
+  overlay.id = 'welcomeOverlay';
+  overlay.style.cssText = `
+    position: fixed; inset: 0; background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(8px); z-index: 5000; display: flex;
+    justify-content: center; align-items: center; padding: 20px;
+    animation: welcomeFadeIn 0.4s ease-out;
+  `;
+
+  overlay.innerHTML = `
+    <div style="
+      background: #ffffff; color: #1e293b; border-radius: 16px;
+      max-width: 500px; width: 100%; padding: 35px 30px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+      text-align: right; direction: rtl; position: relative;
+      animation: welcomeSlideUp 0.5s ease-out;
+    ">
+      <div style="
+        display: flex; align-items: center; gap: 12px;
+        margin-bottom: 25px; padding-bottom: 20px;
+        border-bottom: 2px solid #e2e8f0;
+      ">
+        <div style="
+          width: 50px; height: 50px; flex-shrink: 0;
+          background: #1e293b; border-radius: 12px;
+          display: flex; align-items: center; justify-content: center;
+          font-size: 26px; color: white;
+        ">🗓️</div>
+        <div>
+          <h2 style="font-size: 18px; margin: 0 0 4px; font-weight: 900; color: #1e293b;">سامانه مدیریت برنامه شیفت</h2>
+          <p style="font-size: 13px; color: #64748b; margin: 0;">خوابگاه‌های دانشجویی — آبان ماه ۱۴۰۵</p>
+        </div>
+      </div>
+      
+      <p style="font-size: 14px; color: #334155; line-height: 1.9; margin: 0 0 20px; text-align: justify;">
+        کاربر گرامی، به سامانه مدیریت برنامه شیفت خوش آمدید. 
+        به منظور بهره‌مندی صحیح از امکانات سامانه، لطفاً پیش از اقدام به ثبت اطلاعات، 
+        دستورالعمل زیر را به دقت مطالعه فرمایید.
+      </p>
+      
+      <div style="background: #f8fafc; padding: 20px; border-radius: 10px; margin-bottom: 25px; border: 1px solid #e2e8f0; border-right: 4px solid #3b82f6;">
+        <h3 style="font-size: 14px; font-weight: 800; color: #1e293b; margin: 0 0 15px;">📋 دستورالعمل استفاده:</h3>
+        
+        <div style="display: flex; gap: 12px; margin-bottom: 14px; align-items: flex-start;">
+          <span style="background: #1e293b; color: white; min-width: 22px; height: 22px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px; margin-top: 2px;">۱</span>
+          <span style="font-size: 13.5px; line-height: 1.7; color: #334155;">از بخش <b>«نام من»</b> در نوار بالای صفحه، نام خود را انتخاب نمایید.</span>
+        </div>
+        
+        <div style="display: flex; gap: 12px; margin-bottom: 14px; align-items: flex-start;">
+          <span style="background: #1e293b; color: white; min-width: 22px; height: 22px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px; margin-top: 2px;">۲</span>
+          <span style="font-size: 13.5px; line-height: 1.7; color: #334155;">شیفت‌های مورد نظر خود را در جدول مربوطه ثبت نمایید. <b>توجه:</b> ثبت شیفت برای سایر همکاران امکان‌پذیر نمی‌باشد.</span>
+        </div>
+        
+        <div style="display: flex; gap: 12px; margin-bottom: 14px; align-items: flex-start;">
+          <span style="background: #1e293b; color: white; min-width: 22px; height: 22px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px; margin-top: 2px;">۳</span>
+          <span style="font-size: 13.5px; line-height: 1.7; color: #334155;">در صورت نیاز به ثبت مرخصی، از جدول اختصاصی واقع در پایین صفحه استفاده فرمایید.</span>
+        </div>
+        
+        <div style="display: flex; gap: 12px; align-items: flex-start;">
+          <span style="background: #1e293b; color: white; min-width: 22px; height: 22px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px; margin-top: 2px;">۴</span>
+          <span style="font-size: 13.5px; line-height: 1.7; color: #334155;">پس از تکمیل اطلاعات، از طریق دکمه <b>«📊 خروجی اکسل»</b> فایل گزارش خود را دریافت نمایید.</span>
+        </div>
+      </div>
+
+      <div style="background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; padding: 12px 15px; margin-bottom: 25px; font-size: 12.5px; color: #92400e; line-height: 1.7;">
+        <b>🔔 توجه:</b> مسئولیت صحت اطلاعات ثبت‌شده بر عهده کاربر می‌باشد. لطفاً پیش از ثبت نهایی، اطلاعات خود را با دقت بررسی فرمایید.
+      </div>
+      
+      <button id="welcomeBtn" style="width: 100%; padding: 13px; border: none; border-radius: 8px; background: #1e293b; color: white; font-family: inherit; font-size: 15px; font-weight: 700; cursor: pointer; transition: all 0.2s;">ورود به سامانه</button>
+      
+      <p style="font-size: 11px; color: #94a3b8; margin-top: 15px; margin-bottom: 0; text-align: center; line-height: 1.6;">
+        اداره امور خوابگاه‌ها — نسخه ۱۴۰۵<br>کلیه حقوق محفوظ است.
+      </p>
+    </div>
+  `;
+
+  const styleEl = document.createElement('style');
+  styleEl.textContent = `
+    @keyframes welcomeFadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes welcomeSlideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  `;
+  document.head.appendChild(styleEl);
+  document.body.appendChild(overlay);
+
+  const closeBtn = document.getElementById('welcomeBtn');
+  closeBtn.addEventListener('mouseenter', () => { closeBtn.style.background = '#0f172a'; });
+  closeBtn.addEventListener('mouseleave', () => { closeBtn.style.background = '#1e293b'; });
+  closeBtn.addEventListener('click', () => {
+    overlay.style.animation = 'welcomeFadeIn 0.3s ease-out reverse';
+    setTimeout(() => { overlay.remove(); }, 300);
+  });
+}
+
+// اجرای برنامه
 window.onload = function() {
-  setTimeout(() => {
-    alert("👋 سلام و خسته نباشید!\n\nبه سامانه برنامه‌ریزی شیفت خوابگاه‌ها خوش آمدید.\n\nلطفاً ابتدا از نوار بالا، نام خودتان را انتخاب کنید و سپس شیفت‌های خود را در جدول ثبت کنید.");
-  }, 500);
   init();
+  setTimeout(showWelcomeMessage, 300);
 };
 </script>
 </body>
