@@ -97,7 +97,6 @@
   }
   .search-box input:focus { border-color: var(--primary-color); }
 
-  /* ===== Table Container ===== */
   .table-container {
     background: var(--bg-card); border-radius: 12px;
     box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
@@ -107,7 +106,6 @@
   .table-container::-webkit-scrollbar { height: 6px; }
   .table-container::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
 
-  /* ===== Main Shift Table ===== */
   table.main-table { width: 100%; border-collapse: collapse; text-align: center; font-size: 12px; }
   th, td { border: 1px solid var(--border-color); padding: 8px 4px; vertical-align: middle; }
   th { font-weight: 900; font-size: 12px; color: var(--text-main); background: var(--th-bg); }
@@ -143,7 +141,6 @@
   }
   .section-box h3 { font-size: 13px; margin-bottom: 10px; color: var(--primary-color); border-bottom: 2px solid var(--border-color); padding-bottom: 6px; }
 
-  /* ===== Leave Table ===== */
   .leave-table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .leave-table-wrapper::-webkit-scrollbar { height: 6px; }
   .leave-table-wrapper::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
@@ -159,7 +156,6 @@
   }
   .leave-select.locked { opacity: 0.6; cursor: not-allowed; }
 
-  /* ===== Stats ===== */
   .stats-table-wrapper { overflow-x: auto; border-radius: 8px; border: 1px solid var(--border-color); -webkit-overflow-scrolling: touch; }
   .stats-table-wrapper::-webkit-scrollbar { height: 6px; }
   .stats-table-wrapper::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
@@ -173,7 +169,6 @@
   body.dark-mode .val-plus { background: #064e3b; color: #a7f3d0; }
   body.dark-mode .val-minus { background: #7f1d1d; color: #fecaca; }
 
-  /* ===== Modal ===== */
   .modal-overlay {
     display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
     background: rgba(0,0,0,0.6); z-index: 1000; justify-content: center; align-items: center;
@@ -221,7 +216,6 @@
 
   .col-hidden { display: none !important; }
 
-  /* ===== Responsive ===== */
   @media (min-width: 768px) {
     body { padding: 20px; font-size: 14px; }
     .app-header { flex-direction: row; justify-content: space-between; text-align: right; padding: 16px 24px; }
@@ -234,25 +228,21 @@
     .guide-box { font-size: 13px; padding: 12px 15px; }
     .section-box { padding: 20px; }
     .section-box h3 { font-size: 16px; margin-bottom: 15px; padding-bottom: 8px; }
-    
     table.main-table { font-size: 13px; }
     th, td { padding: 10px 6px; }
     th { font-size: 13px; }
     .day-cell { font-size: 14px; width: 80px; }
     .date-cell { font-size: 12px; width: 80px; }
     select.s-cell { height: 38px; font-size: 12px; }
-
     table.leave-table { font-size: 12px; }
     table.leave-table th { font-size: 12px; padding: 10px 6px; }
     table.leave-table td { padding: 6px; }
     .leave-name-cell { font-size: 13px; padding-right: 12px !important; }
     .leave-select { height: 32px; font-size: 12px; }
-    
     table.stats-table { font-size: 12px; }
     table.stats-table th { padding: 10px 5px; font-size: 11px; }
     table.stats-table td { padding: 8px 5px; }
     .stat-name { padding-right: 12px !important; }
-    
     .modal-content { max-width: 600px; }
     .modal-header { padding: 16px 24px; }
     .modal-header h2 { font-size: 18px; }
@@ -465,7 +455,6 @@
     <div class="dialog-actions" id="dialogActions"></div>
   </div>
 </div>
-
 <script>
 const MONTH = "آبان";
 const DAYS = 30;
@@ -481,7 +470,8 @@ const DEFAULT_PERSONNEL = [
   { name: "خانم هنرمند", req: 175 }, { name: "خانم بابایی", req: 175 }, { name: "خانم یوسفی", req: 175 },
   { name: "خانم یاقوتی", req: 175 }, { name: "خانم دافعی", req: 88 }, { name: "خانم رنجبر", req: 184 },
   { name: "خانم شکیب", req: 184 }, { name: "خانم براتی", req: 184 }, { name: "خانم رحمانی", req: 184 },
-  { name: "خانم چراغ چشم", req: 184 }, { name: "خانم امیری", req: 184 }
+  { name: "خانم چراغ چشم", req: 184 }, { name: "خانم امیری", req: 184 },
+  { name: "خانم حشمتی", req: 175 }
 ].sort((a, b) => a.name.localeCompare(b.name, 'fa'));
 
 const DEFAULT_ADMIN_HASH = "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f";
@@ -784,8 +774,7 @@ function dialog(opts) {
 const alertDlg = (msg, title = "توجه") => dialog({ title, message: msg });
 const confirmDlg = (msg, title = "تأیید", danger = false) => dialog({ title, message: msg, confirm: true, danger });
 const promptDlg = (msg, def = "", title = "ورودی") => dialog({ title, message: msg, input: true, defaultValue: def });
-
-/* ---------- Permission ---------- */
+  /* ---------- Permission ---------- */
 function canEditShiftCell(shiftOwner) {
   if (isAdmin) return true;
   const myName = document.getElementById("myName").value;
@@ -1102,9 +1091,20 @@ function init() {
   const savedHash = localStorage.getItem("adminPasswordHash");
   if (savedHash) adminPasswordHash = savedHash;
   isAdmin = sessionStorage.getItem("isAdmin") === "1";
+
   const pData = localStorage.getItem("personnelData");
   if (pData) { try { PERSONNEL = JSON.parse(pData); } catch (e) {} }
-  if (!Array.isArray(PERSONNEL) || PERSONNEL.length === 0) { PERSONNEL = JSON.parse(JSON.stringify(DEFAULT_PERSONNEL)); savePersonnel(); }
+
+  if (!Array.isArray(PERSONNEL) || PERSONNEL.length === 0) {
+    PERSONNEL = JSON.parse(JSON.stringify(DEFAULT_PERSONNEL));
+  } else {
+    if (!PERSONNEL.some(p => p.name === "خانم حشمتی")) {
+      PERSONNEL.push({ name: "خانم حشمتی", req: 175 });
+      PERSONNEL.sort((a, b) => a.name.localeCompare(b.name, 'fa'));
+    }
+  }
+  savePersonnel();
+
   updateNameSelect();
   const savedZone = localStorage.getItem("myZone");
   if (savedZone) { document.getElementById("myZone").value = savedZone; selectedZone = savedZone; }
